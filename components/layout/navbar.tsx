@@ -15,7 +15,18 @@ const NavBar = () => {
           "mx-auto flex h-24 w-full max-w-5xl flex-row items-center justify-between px-4 py-10"
         }
       >
-        <Image src={"/logo.png"} alt={"NishiMaru"} height={60} width={80} />
+        <div className={"flex flex-row gap-3 items-center justify-center"}>
+          <Link href={"/"}>
+            <Image src={"/logo.png"} alt={"NishiMaru"} height={60} width={80} />
+          </Link>
+          <span className={' text-[#FF0000] text-xl'}>
+            <span className={'font-extrabold'}>
+
+            Nishi
+            </span>
+            <span className={''}>Maru</span>
+          </span>
+        </div>
 
         {/* mobile burger */}
         <button
