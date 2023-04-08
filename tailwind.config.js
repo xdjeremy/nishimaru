@@ -48,6 +48,9 @@ module.exports = {
           900: "#27241D",
         },
       },
+      backgroundImage: {
+        sushi: "url('../assets/images/rice-sushi.gif')",
+      },
     },
   },
   plugins: [],
