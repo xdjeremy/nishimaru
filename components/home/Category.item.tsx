@@ -10,7 +10,6 @@ interface Props {
 const CategoryItem: FC<Props> = ({ category }) => {
   const fileUrl = pocketBase.getFileUrl(category, category.image);
 
-  console.log(fileUrl);
   return (
     <div className={"relative w-full max-w-[400px] h-[580px] object-contain"}>
       <Image

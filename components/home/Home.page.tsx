@@ -9,7 +9,7 @@ interface Props {
 
 const HomePage: FC<Props> = ({ categories }) => {
   return (
-    <div className={"w-screen"}>
+    <div className={""}>
       <HeroSection />
       <Categories categoriesList={categories} />
     </div>
