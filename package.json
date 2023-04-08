@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typegen": "npx pocketbase-typegen --db ./pocketbase/pb_data/data.db --out ./types/pocketbase-types.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "pocketbase-typegen": "^1.1.7",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.6",

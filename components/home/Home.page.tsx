@@ -1,10 +1,17 @@
-import React, {FC} from 'react';
+import React, { FC } from "react";
 import HeroSection from "@/components/home/Hero.section";
+import Categories from "@/components/home/Categories.section";
+import { CategoriesResponse } from "@/types";
 
-const HomePage: FC = () => {
+interface Props {
+  categories: CategoriesResponse[];
+}
+
+const HomePage: FC<Props> = ({ categories }) => {
   return (
-    <div className={'w-screen'}>
+    <div className={"w-screen"}>
       <HeroSection />
+      <Categories categoriesList={categories} />
     </div>
   );
 };
