@@ -1,2 +1,2 @@
 export * from './Home.page';
-export * from './Category.item';
+export * from '../common/category.item';

@@ -1,6 +1,5 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
-import { Title } from "@/components/common";
 import { Layout } from "@/components/layout";
 import { CategoriesPage } from "@/components/category";
 import { initPocketBase } from "@/utils";

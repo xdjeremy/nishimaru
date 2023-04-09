@@ -2,13 +2,13 @@ import React, { FC } from "react";
 import { FoodsResponse } from "@/types";
 import Image from "next/image";
 import { pocketBase } from "@/utils";
-import { SmallButton } from "@/components/common";
+import { SmallButton } from "@/components/common/index";
 
 interface Props {
   food: FoodsResponse;
 }
 
-const BestSellerItem: FC<Props> = ({ food }) => {
+const FoodItem: FC<Props> = ({ food }) => {
   const imageUrl = pocketBase.getFileUrl(food, food.image);
 
   // price with decimal
@@ -45,4 +45,4 @@ const BestSellerItem: FC<Props> = ({ food }) => {
   );
 };
 
-export default BestSellerItem;
+export { FoodItem };

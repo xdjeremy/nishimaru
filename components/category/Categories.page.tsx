@@ -8,7 +8,6 @@ interface Props {
 }
 
 const CategoriesPage: FC<Props> = ({ categories }) => {
-  console.log(categories);
   return (
     <div className={"my-11 flex flex-col"}>
       <Title content={"Explore Foods"} />

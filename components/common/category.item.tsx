@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { CategoriesResponse } from "@/types";
 import { pocketBase } from "@/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   category: CategoriesResponse;
@@ -9,9 +10,10 @@ interface Props {
 
 const CategoryItem: FC<Props> = ({ category }) => {
   const fileUrl = pocketBase.getFileUrl(category, category.image);
+  const categoryUrl = `/category/${category.id}`;
 
   return (
-    <div className={"relative w-full max-w-[400px] h-[580px] object-contain"}>
+    <Link href={categoryUrl} className={"relative w-full max-w-[400px] h-[580px] object-contain"}>
       <Image
         src={fileUrl}
         className={"h-auto w-full rounded-xl brightness-75"}
@@ -24,7 +26,7 @@ const CategoryItem: FC<Props> = ({ category }) => {
       >
         {category.title}
       </span>
-    </div>
+    </Link>
   );
 };
 

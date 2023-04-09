@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { FoodsResponse } from "@/types";
-import BestSellerItem from "@/components/home/BestSeller.item";
 import Link from "next/link";
+import {FoodItem} from "@/components/common";
 
 interface Props {
   foodsList: FoodsResponse[];
@@ -19,7 +19,7 @@ const BestSeller: FC<Props> = ({ foodsList }) => {
         }
       >
         {foodsList.map((food) => (
-          <BestSellerItem food={food} key={food.id} />
+          <FoodItem food={food} key={food.id} />
         ))}
       </div>
       <span className={"flex w-full flex-col items-center justify-center mt-7"}>
