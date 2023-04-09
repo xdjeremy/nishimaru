@@ -13,7 +13,7 @@ const BestSellerItem: FC<Props> = ({ food }) => {
 
   // price with decimal
   const price = food.price.toString().split(".");
-  const priceWithDecimal = price[1] ? '' : ".00";
+  const priceWithDecimal = price[1] ? "" : ".00";
 
   return (
     <div
@@ -31,9 +31,12 @@ const BestSellerItem: FC<Props> = ({ food }) => {
       <div>
         <h3 className={"font-bold"}>{food.title}</h3>
         <span className={"text-xl"}>
-          Php {food.price}{priceWithDecimal}
+          Php {food.price}
+          {priceWithDecimal}
         </span>
-        <p className={"h-16 text-sm text-[#747d8c] line-clamp-3"}>{food.description}</p>
+        <p className={"line-clamp-3 h-16 text-sm text-[#747d8c]"}>
+          {food.description}
+        </p>
         <div className={"mt-3.5"}>
           <SmallButton type={"button"}>Order Now</SmallButton>
         </div>
