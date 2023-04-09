@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { CategoriesResponse } from "@/types";
-import CategoryItem from "@/components/home/Category.item";
+import {CategoryItem} from "@/components/home/Category.item";
 
 interface Props {
   categoriesList: CategoriesResponse[];

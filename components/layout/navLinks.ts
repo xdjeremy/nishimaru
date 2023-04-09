@@ -10,7 +10,7 @@ const navLinks: NavLink[] = [
   },
   {
     name: "Categories",
-    path: "/categories",
+    path: "/category",
   },
   {
     name: "Foods",

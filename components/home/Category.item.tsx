@@ -28,4 +28,4 @@ const CategoryItem: FC<Props> = ({ category }) => {
   );
 };
 
-export default CategoryItem;
+export { CategoryItem };

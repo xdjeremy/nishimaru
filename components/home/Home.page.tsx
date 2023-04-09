@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import HeroSection from "@/components/home/Hero.section";
-import Categories from "@/components/home/Categories.section";
 import {CategoriesResponse, FoodsResponse} from "@/types";
 import BestSeller from "@/components/home/BestSeller.section";
+import Categories from "@/components/home/Categories.section";
 
 interface Props {
   categories: CategoriesResponse[];
