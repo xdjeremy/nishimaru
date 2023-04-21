@@ -1,8 +1,9 @@
 import React, { FC } from "react";
-import { FoodsResponse } from "@/types";
+import { CartsRecord, FoodsResponse } from "@/types";
 import Image from "next/image";
 import { pocketBase } from "@/utils";
 import { SmallButton } from "@/components/common/index";
+import toast from "react-hot-toast";
 
 interface Props {
   food: FoodsResponse;
@@ -14,6 +15,26 @@ const FoodItem: FC<Props> = ({ food }) => {
   // price with decimal
   const price = food.price.toString().split(".");
   const priceWithDecimal = price[1] ? "" : ".00";
+
+  const addToCart = async () => {
+    try {
+      // if no user is logged in
+      if (!pocketBase.authStore.isValid || !pocketBase.authStore.model) {
+        return toast.error("Please login to add items to cart");
+      }
+
+      const cartItem: CartsRecord = {
+        food: food.id,
+        active: true,
+        quantity: 1,
+        user: pocketBase.authStore.model?.id,
+      };
+
+      await pocketBase.collection("carts").create(cartItem);
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
 
   return (
     <div
@@ -38,7 +59,9 @@ const FoodItem: FC<Props> = ({ food }) => {
           {food.description}
         </p>
         <div className={"mt-3.5"}>
-          <SmallButton type={"button"}>Order Now</SmallButton>
+          <SmallButton onClick={addToCart} type={"button"}>
+            Order Now
+          </SmallButton>
         </div>
       </div>
     </div>

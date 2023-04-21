@@ -3,6 +3,7 @@
 */
 
 export enum Collections {
+	Carts = "carts",
 	Categories = "categories",
 	Foods = "foods",
 	Users = "users",
@@ -32,6 +33,13 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
+export type CartsRecord = {
+	user: RecordIdString
+	active?: boolean
+	food: RecordIdString
+	quantity: number
+}
+
 export type CategoriesRecord = {
 	title: string
 	image: string
@@ -55,6 +63,7 @@ export type UsersRecord = {
 }
 
 // Response types include system fields and match responses from the PocketBase API
+export type CartsResponse<Texpand = unknown> = CartsRecord & BaseSystemFields<Texpand>
 export type CategoriesResponse = CategoriesRecord & BaseSystemFields
 export type FoodsResponse<Texpand = unknown> = FoodsRecord & BaseSystemFields<Texpand>
 export type UsersResponse = UsersRecord & AuthSystemFields
@@ -62,12 +71,14 @@ export type UsersResponse = UsersRecord & AuthSystemFields
 // Types containing all Records and Responses, useful for creating typing helper functions
 
 export type CollectionRecords = {
+	carts: CartsRecord
 	categories: CategoriesRecord
 	foods: FoodsRecord
 	users: UsersRecord
 }
 
 export type CollectionResponses = {
+	carts: CartsResponse
 	categories: CategoriesResponse
 	foods: FoodsResponse
 	users: UsersResponse
