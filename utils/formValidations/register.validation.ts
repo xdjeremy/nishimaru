@@ -3,6 +3,17 @@ import { RegisterOptions } from "react-hook-form";
 const RegisterValidation: {
   [x: string]: RegisterOptions;
 } = {
+  username: {
+    required: "Username is required",
+    minLength: {
+      value: 3,
+      message: "Username must be at least 3 characters",
+    },
+    maxLength: {
+      value: 20,
+      message: "Username must be at most 20 characters",
+    },
+  },
   name: {
     required: "Name is required",
     minLength: {

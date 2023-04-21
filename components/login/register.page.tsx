@@ -4,7 +4,7 @@ import RegisterForm from "@/components/login/register.form";
 
 const RegisterPage: FC = () => {
   return (
-    <div className={"bg-[#B41212]"}>
+    <div className={"bg-[#B41212] pb-10 pt-2"}>
       <RegisterTitle />
       <RegisterForm />
     </div>

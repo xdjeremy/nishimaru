@@ -59,7 +59,6 @@ export type FoodsRecord = {
 
 export type UsersRecord = {
 	name?: string
-	avatar?: string
 }
 
 // Response types include system fields and match responses from the PocketBase API
