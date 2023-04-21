@@ -3,6 +3,8 @@ import { Button } from "@/components/common/button";
 import { pocketBase } from "@/utils";
 import { FoodsResponse } from "@/types";
 import { ListResult } from "pocketbase";
+import Sushi from "../../assets/images/sushi.svg";
+import Image from "next/image";
 
 const Search: FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -48,7 +50,11 @@ const Search: FC = () => {
           />
         </div>
         {/* search result */}
-        <div className={"rounded-lg bg-white"}>
+        <div
+          className={
+            "absolute top-28 rounded-lg bg-white shadow-md md:top-32 xl:top-40"
+          }
+        >
           <ul className={"grid grid-cols-1 divide-y"}>
             {result?.items.map((food) => (
               <li
@@ -58,6 +64,29 @@ const Search: FC = () => {
                 {food.title}
               </li>
             ))}
+            {isLoading && (
+              <li
+                className={
+                  "flex translate-y-1.5 flex-row items-center justify-center rounded-lg px-4 py-2 hover:bg-neutral-100"
+                }
+              >
+                <Image
+                  src={Sushi}
+                  alt={"Loading..."}
+                  className={"h-10 w-10 animate-bounce"}
+                />
+                <Image
+                  src={Sushi}
+                  alt={"Loading..."}
+                  className={"h-10 w-10 animate-bounce animation-delay-100"}
+                />
+                <Image
+                  src={Sushi}
+                  alt={"Loading..."}
+                  className={"h-10 w-10 animate-bounce animation-delay-200"}
+                />
+              </li>
+            )}
           </ul>
         </div>
       </div>
