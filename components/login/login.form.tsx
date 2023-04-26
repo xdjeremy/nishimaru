@@ -28,6 +28,11 @@ const LoginForm: FC = () => {
       setIsLoading(true);
       await pocketBase.collection("users").authWithPassword(username, password);
 
+      // save to cookie
+      document.cookie = pocketBase.authStore.exportToCookie({
+        httpOnly: false,
+      });
+
       toast.success("Logged in successfully");
 
       await router.push("/");

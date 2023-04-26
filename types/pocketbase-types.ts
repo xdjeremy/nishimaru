@@ -57,8 +57,13 @@ export type FoodsRecord = {
 	active?: boolean
 }
 
+export enum UsersTypeOptions {
+	"user" = "user",
+	"admin" = "admin",
+}
 export type UsersRecord = {
 	name?: string
+	type: UsersTypeOptions
 }
 
 // Response types include system fields and match responses from the PocketBase API

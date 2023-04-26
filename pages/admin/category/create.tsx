@@ -1,15 +1,15 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
-import { AdminLayout } from "@/components/layout";
-import { AdminCategoriesPage } from "@/components/admin/categories";
+import { Layout } from "@/components/layout";
+import { NewCategoryPage } from "@/components/admin/categories";
 import { initPocketBase } from "@/utils";
 import { UsersResponse, UsersTypeOptions } from "@/types";
 
-const AdminCategories: NextPage = () => {
+const CreateCategory: NextPage = () => {
   return (
-    <AdminLayout>
-      <AdminCategoriesPage />
-    </AdminLayout>
+    <Layout>
+      <NewCategoryPage />
+    </Layout>
   );
 };
 
@@ -29,8 +29,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     // if user is not admin
     const user = await pb
-      .collection("users")
-      .getOne<UsersResponse>(pb.authStore.model?.id || "");
+        .collection("users")
+        .getOne<UsersResponse>(pb.authStore.model?.id || "");
 
     if (user.type !== UsersTypeOptions.admin) {
       return {
@@ -42,14 +42,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
 
     return {
-      props: {},
-    };
-  } catch (err: any) {
-    console.log(err.data);
+        props: {},
+    }
+  } catch (_) {
     return {
       notFound: true,
     };
   }
 };
 
-export default AdminCategories;
+export default CreateCategory;

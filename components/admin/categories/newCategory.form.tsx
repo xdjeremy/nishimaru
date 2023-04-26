@@ -1,27 +1,21 @@
 import React, { FC, useState } from "react";
-import { CategoriesResponse } from "@/types";
 import { AdminInput, Button } from "@/components/common";
-import { SubmitHandler, useFormContext } from "react-hook-form";
-import { CategoryTypeInput } from "@/components/admin/categories/category.type";
 import { CategoryValidation } from "@/utils/formValidations";
-import toast from "react-hot-toast";
 import { FileUploader } from "react-drag-drop-files";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { CategoryTypeInput } from "@/components/admin/categories/category.type";
 import { pocketBase } from "@/utils";
 import { serialize } from "object-to-formdata";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
-interface Props {
-  category: CategoriesResponse;
-}
-
-const EditCategoryForm: FC<Props> = ({ category }) => {
+const NewCategoryForm: FC = () => {
   const {
     register,
+    handleSubmit,
     formState: { errors },
     setValue,
-    handleSubmit,
-  } = useFormContext<CategoryTypeInput>();
-
+  } = useForm<CategoryTypeInput>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -38,20 +32,20 @@ const EditCategoryForm: FC<Props> = ({ category }) => {
       setIsLoading(true);
 
       const data = {
-        image,
-        active,
-        featured,
         title,
+        featured,
+        active,
+        image,
       };
 
       const formData = serialize(data);
 
-      await pocketBase.collection("categories").update(category.id, formData);
+      await pocketBase.collection("categories").create(formData);
+      toast.success("Category created successfully");
 
-      toast.success("Category updated successfully");
       await router.push("/admin/category");
     } catch (err: any) {
-      console.log(err);
+      toast.error(err.data.message);
     } finally {
       setIsLoading(false);
     }
@@ -123,4 +117,4 @@ const EditCategoryForm: FC<Props> = ({ category }) => {
   );
 };
 
-export default EditCategoryForm;
+export default NewCategoryForm;
