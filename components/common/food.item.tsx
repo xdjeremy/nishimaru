@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { CartsRecord, FoodsResponse } from "@/types";
 import Image from "next/image";
 import { pocketBase } from "@/utils";
@@ -16,9 +16,12 @@ const FoodItem: FC<Props> = ({ food }) => {
   const price = food.price.toString().split(".");
   const priceWithDecimal = price[1] ? "" : ".00";
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const addToCart = async () => {
     try {
-      console.log(pocketBase.authStore.model?.id);
+      setIsLoading(true);
+
       // if no user is logged in
       if (!pocketBase.authStore.isValid || !pocketBase.authStore.model) {
         return toast.error("Please register to add items to cart");
@@ -32,8 +35,12 @@ const FoodItem: FC<Props> = ({ food }) => {
       };
 
       await pocketBase.collection("carts").create(cartItem);
+
+      toast.success("Item added to cart");
     } catch (err: any) {
-      console.log(err.data);
+      toast.error(err.data.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -60,7 +67,7 @@ const FoodItem: FC<Props> = ({ food }) => {
           {food.description}
         </p>
         <div className={"mt-3.5"}>
-          <SmallButton onClick={addToCart} type={"button"}>
+          <SmallButton loading={isLoading} onClick={addToCart} type={"button"}>
             Order Now
           </SmallButton>
         </div>

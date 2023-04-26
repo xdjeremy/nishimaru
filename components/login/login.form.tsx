@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import LoginInput from "@/components/login/login.input";
 import { AuthButton, AuthInput } from "@/components/common";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LoginValidation } from "@/utils/formValidations";
