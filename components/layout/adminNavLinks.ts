@@ -10,7 +10,7 @@ const adminNavLinks: AdminNavLink[] = [
   },
   {
     name: "Categories",
-    path: "/admin/categories",
+    path: "/admin/category",
   },
   {
     name: "Food Items",

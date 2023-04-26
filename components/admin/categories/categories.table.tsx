@@ -3,13 +3,14 @@ import useSWR from "swr";
 import { CategoriesResponse } from "@/types";
 import CategoryTableItem from "@/components/admin/categories/categoryItem.table";
 import { pocketBaseFetcher } from "@/utils";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const CategoriesTable: FC = () => {
   const { data, error } = useSWR<CategoriesResponse[]>(
     ["categories"],
     pocketBaseFetcher
   );
-  console.log(data);
 
   return (
     <div className="relative overflow-x-auto">
@@ -41,6 +42,46 @@ const CategoriesTable: FC = () => {
             data.map((category) => (
               <CategoryTableItem category={category} key={category.id} />
             ))}
+          {error && !data && (
+            <tr>
+              <td colSpan={6} className="text-center">
+                <p className="text-red-500">Something went wrong</p>
+              </td>
+            </tr>
+          )}
+          {!data && !error && (
+            <>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
+                <tr
+                  key={item}
+                  className="border-b bg-white dark:border-gray-700 dark:bg-gray-800"
+                >
+                  <th
+                    scope="row"
+                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                  >
+                    <Skeleton />
+                  </th>
+                  <td className="px-6 py-4">
+                    <Skeleton />
+                  </td>
+                  <td className="px-6 py-4">
+                    <Skeleton />
+                  </td>
+                  <td className="px-6 py-4">
+                    <Skeleton />
+                  </td>
+                  <td className="px-6 py-4">
+                    <Skeleton />
+                  </td>
+                  <td className="px-6 py-4">
+                    <Skeleton />
+                    <Skeleton />
+                  </td>
+                </tr>
+              ))}
+            </>
+          )}
         </tbody>
       </table>
     </div>

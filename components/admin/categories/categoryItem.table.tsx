@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { CategoriesResponse } from "@/types";
 import { pocketBase } from "@/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   category: CategoriesResponse;
@@ -30,9 +31,9 @@ const CategoryTableItem: FC<Props> = ({ category }) => {
       <td className="px-6 py-4">{category.featured ? "Yes" : "No"}</td>
       <td className="px-6 py-4">{category.active ? "Yes" : "No"}</td>
       <td className="px-6 py-4">
-        <button className="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700 mr-3">
+        <Link href={`/admin/category/${category.id}`} className="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700 mr-3">
           Edit
-        </button>
+        </Link>
         <button className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700">
           Delete
         </button>
