@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { pocketBase } from "@/utils";
 import { FoodsResponse } from "@/types";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 interface Props {
   food: FoodsResponse;
@@ -13,6 +15,18 @@ const FoodItemsTableItem: FC<Props> = ({ food }) => {
 
   // add .00 to price if it's a whole number
   const price = food.price % 1 === 0 ? food.price + ".00" : food.price;
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    try {
+      await pocketBase.collection("foods").delete(food.id);
+
+      toast.success("Food item deleted successfully");
+      router.reload();
+    } catch (err: any) {
+      toast.error(err.data.message);
+    }
+  };
 
   return (
     <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -36,7 +50,10 @@ const FoodItemsTableItem: FC<Props> = ({ food }) => {
         >
           Edit
         </Link>
-        <button className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700">
+        <button
+          onClick={handleDelete}
+          className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+        >
           Delete
         </button>
       </td>
