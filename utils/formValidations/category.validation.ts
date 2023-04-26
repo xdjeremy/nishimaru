@@ -6,12 +6,8 @@ const CategoryValidation: {
   title: {
     required: "Title is required",
   },
-  featured: {
-    required: "Featured is required",
-  },
-  active: {
-    required: "Active is required",
-  },
+  featured: {},
+  active: {},
 };
 
 export { CategoryValidation };

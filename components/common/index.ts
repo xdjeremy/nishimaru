@@ -1,5 +1,3 @@
-import exp from "constants";
-
 export * from "./input";
 export * from "./button";
 export * from "./SmallButton";

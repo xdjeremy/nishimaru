@@ -1,10 +1,9 @@
 import React, { FC, useState } from "react";
-import { CategoriesRecord, CategoriesResponse } from "@/types";
+import { CategoriesResponse } from "@/types";
 import { AdminInput, Button } from "@/components/common";
 import { SubmitHandler, useFormContext } from "react-hook-form";
 import { CategoryTypeInput } from "@/components/admin/categories/category.type";
 import { CategoryValidation } from "@/utils/formValidations";
-import { FormData } from "next/dist/compiled/@edge-runtime/primitives/fetch";
 import toast from "react-hot-toast";
 import { FileUploader } from "react-drag-drop-files";
 import { pocketBase } from "@/utils";
@@ -58,7 +57,7 @@ const EditCategoryForm: FC<Props> = ({ category }) => {
   return (
     <form
       onSubmit={handleSubmit(handleSaveCategory)}
-      className={"flex w-fit flex-col gap-3 rounded-lg bg-white px-10 py-5"}
+      className={"flex w-full flex-col gap-3 rounded-lg bg-white px-10 py-5 h-96"}
     >
       <AdminInput
         type={"text"}

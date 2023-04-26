@@ -1,9 +1,10 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { CategoriesResponse } from "@/types";
 import { AdminTitle } from "@/components/common";
 import EditCategoryForm from "@/components/admin/categories/editCategory.form";
 import { useFormContext } from "react-hook-form";
 import { CategoryTypeInput } from "@/components/admin/categories/category.type";
+import EditCategoryPreview from "@/components/admin/categories/editCategory.preview";
 
 interface Props {
   category: CategoriesResponse;
@@ -20,10 +21,11 @@ const EditCategoryPage: FC<Props> = ({ category }) => {
   }, [category.active, category.featured, category.title, setValue]);
 
   return (
-    <div className={"flex flex-col gap-10 pb-5"}>
+    <div className={"flex flex-col gap-10 pb-5 w-full max-w-4xl mx-auto"}>
       <AdminTitle title={`Edit ${category.title} Category`} />
-      <div>
+      <div className={'flex flex-row items-center gap-3 w-full'}>
         <EditCategoryForm category={category} />
+        <EditCategoryPreview category={category} />
       </div>
     </div>
   );
