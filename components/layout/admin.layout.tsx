@@ -8,10 +8,10 @@ interface Props {
 
 const AdminLayout: FC<Props> = ({ children }) => {
   return (
-    <div className={"flex min-h-screen flex-col justify-between"}>
+    <div className={"flex min-h-screen flex-col justify-between bg-[#F1F2F6]"}>
       <div className={"flex flex-col"}>
         <AdminNavbar />
-        <div className={"bg-[#F1F2F6]"}>{children}</div>
+        <div className={""}>{children}</div>
       </div>
       <AdminFooter />
     </div>
