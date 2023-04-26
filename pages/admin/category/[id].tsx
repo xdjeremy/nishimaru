@@ -76,5 +76,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 };
 
-// todo: block users who are not admin
 export default EditCategory;

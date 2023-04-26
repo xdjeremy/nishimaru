@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 interface Props {
-  type: "text" | "password";
+  type: "text" | "password" | "number";
   placeholder: string;
   disabled: boolean;
   label: string;
@@ -23,7 +23,12 @@ const AdminInput: FC<Props> = ({
 }) => {
   return (
     <div>
-      <label htmlFor={name} className={'text-sm font-medium text-gray-900 dark:text-gray-300'}>{label}</label>
+      <label
+        htmlFor={name}
+        className={"text-sm font-medium text-gray-900 dark:text-gray-300"}
+      >
+        {label}
+      </label>
       <input
         {...register(name, validation)}
         className={"w-full rounded-lg border border-gray-700 px-4 py-2"}
