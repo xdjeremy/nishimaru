@@ -1,15 +1,15 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
-import { Layout } from "@/components/layout";
+import { AdminLayout } from "@/components/layout";
 import { NewCategoryPage } from "@/components/admin/categories";
 import { initPocketBase } from "@/utils";
 import { UsersResponse, UsersTypeOptions } from "@/types";
 
 const CreateCategory: NextPage = () => {
   return (
-    <Layout>
+    <AdminLayout>
       <NewCategoryPage />
-    </Layout>
+    </AdminLayout>
   );
 };
 
