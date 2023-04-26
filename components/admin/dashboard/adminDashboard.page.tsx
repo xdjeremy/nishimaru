@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import StatsItem from "@/components/admin/dashboard/stats.item";
 import { pocketBaseFetcher } from "@/utils";
 import useSWR from "swr";
+import { AdminTitle } from "@/components/common";
 
 const AdminDashboardPage: FC = () => {
   const { data: categoriesData, error: categoriesError } = useSWR(
@@ -15,8 +16,8 @@ const AdminDashboardPage: FC = () => {
   );
 
   return (
-    <div className={"px-20"}>
-      <h1 className={"mt-10 text-2xl font-bold"}>Dashboard</h1>
+    <div>
+      <AdminTitle title={"Administrator Dashboard"} />
 
       <div
         className={

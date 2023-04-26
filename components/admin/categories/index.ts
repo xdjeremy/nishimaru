@@ -1,0 +1,1 @@
+export * from './adminCategories.page';

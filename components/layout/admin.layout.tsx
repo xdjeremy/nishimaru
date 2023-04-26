@@ -11,7 +11,7 @@ const AdminLayout: FC<Props> = ({ children }) => {
     <div className={"flex min-h-screen flex-col justify-between bg-[#F1F2F6]"}>
       <div className={"flex flex-col"}>
         <AdminNavbar />
-        <div className={""}>{children}</div>
+        <div className={"px-20"}>{children}</div>
       </div>
       <AdminFooter />
     </div>

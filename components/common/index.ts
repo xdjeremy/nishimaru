@@ -8,3 +8,4 @@ export * from "./food.item";
 export * from "./search";
 export * from "./auth/input";
 export * from "./auth/button";
+export * from './admin/title';
