@@ -61,7 +61,7 @@ const RegisterForm: FC = () => {
 
       toast.success("Account created successfully");
 
-      // redirect to login page
+      // redirect to register page
       await router.push("/");
     } catch (err: any) {
       console.log(err.data);
@@ -137,7 +137,7 @@ const RegisterForm: FC = () => {
           disabled={isLoading}
         />
         <div className={"mt-5 flex flex-col"}>
-          <AuthButton disabled={isLoading} type={"submit"}>
+          <AuthButton color={'red'} disabled={isLoading} type={"submit"}>
             Sign Up
           </AuthButton>
           <div className="relative flex items-center py-5">
@@ -149,7 +149,7 @@ const RegisterForm: FC = () => {
           </div>
           <p className={"text-center"}>
             Already have an account?{" "}
-            <Link href={"login"} className={"font-semibold underline"}>
+            <Link href={"register"} className={"font-semibold underline"}>
               Log in here
             </Link>
           </p>

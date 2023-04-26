@@ -18,9 +18,10 @@ const FoodItem: FC<Props> = ({ food }) => {
 
   const addToCart = async () => {
     try {
+      console.log(pocketBase.authStore.model?.id);
       // if no user is logged in
       if (!pocketBase.authStore.isValid || !pocketBase.authStore.model) {
-        return toast.error("Please login to add items to cart");
+        return toast.error("Please register to add items to cart");
       }
 
       const cartItem: CartsRecord = {
@@ -32,7 +33,7 @@ const FoodItem: FC<Props> = ({ food }) => {
 
       await pocketBase.collection("carts").create(cartItem);
     } catch (err: any) {
-      console.log(err);
+      console.log(err.data);
     }
   };
 
