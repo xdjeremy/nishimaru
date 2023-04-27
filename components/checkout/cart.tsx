@@ -1,13 +1,20 @@
 import React, { Dispatch, FC } from "react";
 import CartItem from "@/components/checkout/cart.item";
 import { ICart } from "@/components/checkout/checkout.page";
+import { Button } from "@/components/common";
 
 interface Props {
   cart: ICart[];
   setCartData: Dispatch<React.SetStateAction<ICart[]>>;
+  isLoading: boolean;
 }
 
-const Cart: FC<Props> = ({ cart, setCartData }) => {
+const Cart: FC<Props> = ({ cart, setCartData, isLoading }) => {
+  const totalCartPrice = cart.reduce(
+    (acc, item) => acc + item.quantity * item.food!.price,
+    0
+  );
+
   return (
     <div className={"w-full rounded-lg bg-white"}>
       <div className={"flex flex-row items-center justify-between px-5 py-3"}>
@@ -27,9 +34,14 @@ const Cart: FC<Props> = ({ cart, setCartData }) => {
           <span className={"text-sm font-medium text-gray-900 dark:text-white"}>
             Subtotal
           </span>
-          <span className={"text-lg font-bold text-gray-900 dark:text-white"}>
-            $21.98
+          <span
+            className={"mb-10 text-lg font-bold text-gray-900 dark:text-white"}
+          >
+            PHP {totalCartPrice.toFixed(2)}
           </span>
+          <Button disabled={isLoading} type={"submit"}>
+            Checkout
+          </Button>
         </div>
       </div>
     </div>

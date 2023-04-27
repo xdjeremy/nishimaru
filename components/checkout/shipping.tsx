@@ -5,7 +5,10 @@ import { CheckoutTypes } from "@/components/checkout/checkout.types";
 import { CheckoutValidation } from "@/utils/formValidations/checkout.validation";
 
 const Shipping: FC = () => {
-  const { register } = useFormContext<CheckoutTypes>();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<CheckoutTypes>();
 
   return (
     <div className={"w-full rounded-lg bg-white"}>
@@ -24,6 +27,7 @@ const Shipping: FC = () => {
           register={register}
           placeholder={"John Doe"}
           validation={CheckoutValidation.fullName}
+          error={errors.fullName?.message}
         />
         <CheckoutInput
           type={"text"}
@@ -32,6 +36,7 @@ const Shipping: FC = () => {
           register={register}
           placeholder={"123 Street"}
           validation={CheckoutValidation.address}
+          error={errors.address?.message}
         />
         <CheckoutInput
           type={"text"}
@@ -40,6 +45,7 @@ const Shipping: FC = () => {
           register={register}
           placeholder={"john@email.com"}
           validation={CheckoutValidation.email}
+          error={errors.email?.message}
         />
       </div>
     </div>

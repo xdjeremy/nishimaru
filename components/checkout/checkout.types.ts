@@ -1,5 +1,5 @@
 export interface CheckoutTypes {
-    name: string;
+    fullName: string;
     email: string;
     address: string;
 }
