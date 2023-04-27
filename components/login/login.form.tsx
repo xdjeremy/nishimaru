@@ -5,6 +5,7 @@ import { LoginValidation } from "@/utils/formValidations";
 import toast from "react-hot-toast";
 import { pocketBase } from "@/utils";
 import { useRouter } from "next/router";
+import { UsersResponse, UsersTypeOptions } from "@/types";
 
 interface LoginInputs {
   username: string;
@@ -33,9 +34,19 @@ const LoginForm: FC = () => {
         httpOnly: false,
       });
 
-      toast.success("Logged in successfully");
+      // get user
+      const user = await pocketBase
+        .collection("users")
+        .getOne<UsersResponse>(pocketBase.authStore.model?.id || "");
 
-      await router.push("/");
+      toast.success("Logged in successfully");
+      if (user.type === UsersTypeOptions.admin) {
+        await router.push("/admin");
+        return;
+      } else {
+        await router.push("/");
+        return;
+      }
     } catch (err: any) {
       toast.error(err.data.message);
     } finally {

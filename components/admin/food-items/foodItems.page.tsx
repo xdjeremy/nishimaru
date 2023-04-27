@@ -9,7 +9,7 @@ const FoodItemsPage: FC = () => {
       <AdminTitle title={"Manage Food Items"} />
       <div className={"flex flex-col gap-3"}>
         <Link href={"/admin/food-items/create"}>
-          <Button type={"button"}>Add Category</Button>
+          <Button type={"button"}>Add Food</Button>
         </Link>
         <FoodItemsTable />
       </div>

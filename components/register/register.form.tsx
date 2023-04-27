@@ -8,6 +8,7 @@ import Link from "next/link";
 import { pocketBase } from "@/utils";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
+import { UsersTypeOptions } from "@/types";
 
 interface Inputs {
   username: string;
@@ -52,6 +53,7 @@ const RegisterForm: FC = () => {
         password,
         passwordConfirm: confirmPassword,
         name,
+        type: UsersTypeOptions.user
       };
 
       await pocketBase.collection("users").create(data);

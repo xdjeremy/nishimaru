@@ -15,16 +15,13 @@ const NavBar = () => {
           "mx-auto flex h-24 w-full max-w-5xl flex-row items-center justify-between px-4 py-10"
         }
       >
-        <div className={"flex flex-row gap-3 items-center justify-center"}>
+        <div className={"flex flex-row items-center justify-center gap-3"}>
           <Link href={"/"}>
             <Image src={"/logo.png"} alt={"NishiMaru"} height={60} width={80} />
           </Link>
-          <span className={' text-[#FF0000] text-xl'}>
-            <span className={'font-extrabold'}>
-
-            Nishi
-            </span>
-            <span className={''}>Maru</span>
+          <span className={" text-xl text-[#FF0000]"}>
+            <span className={"font-extrabold"}>Nishi</span>
+            <span className={""}>Maru</span>
           </span>
         </div>
 
