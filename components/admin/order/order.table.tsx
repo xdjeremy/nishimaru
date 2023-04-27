@@ -16,6 +16,8 @@ const orderFetcher = async (database: string): Promise<any> => {
 };
 const OrderTable: FC = () => {
     const {data, error} = useSWR<OrdersResponse<IExpand>[]>(['orders'], orderFetcher);
+
+    console.log(data);
     return (
         <div className="relative overflow-x-auto">
             <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">

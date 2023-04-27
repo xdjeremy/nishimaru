@@ -18,7 +18,7 @@ const adminNavLinks: AdminNavLink[] = [
   },
   {
     name: "Order Section",
-    path: "/admin/orders",
+    path: "/admin/order",
   },
   {
     name: "Manage Admins",

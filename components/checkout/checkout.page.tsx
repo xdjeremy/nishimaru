@@ -78,6 +78,11 @@ const CheckoutPage: FC<Props> = ({ cart }) => {
         });
       });
 
+      // delete cart
+      cartData.map(async (item) => {
+        await pocketBase.collection("carts").delete(item.id);
+      })
+
       toast.success("Checkout success");
 
       await router.push("/");
