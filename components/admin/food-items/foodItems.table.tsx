@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { FoodsResponse } from "@/types";
 import { pocketBaseFetcher } from "@/utils";
 import FoodItemsTableItem from "@/components/admin/food-items/foodItemsTable.item";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const FoodItemsTable: FC = () => {
   const { data, error } = useSWR<FoodsResponse[]>(["foods"], pocketBaseFetcher);

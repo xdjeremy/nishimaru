@@ -26,7 +26,7 @@ const CheckoutPage: FC<Props> = ({ cart }) => {
   const [cartData, setCartData] = useState<ICart[]>([]);
   const { handleSubmit } = useFormContext<CheckoutTypes>();
   const router = useRouter();
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const data: ICart[] = cart.map((item) => {
@@ -85,7 +85,7 @@ const CheckoutPage: FC<Props> = ({ cart }) => {
       toast.error(err.message);
       console.log(err.message);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
