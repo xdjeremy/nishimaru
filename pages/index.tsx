@@ -4,6 +4,8 @@ import { GetServerSideProps, NextPage } from "next";
 import { initPocketBase } from "@/utils";
 import { ListResult } from "pocketbase";
 import { CategoriesResponse, FoodsResponse, UsersResponse } from "@/types";
+import { useEffect } from "react";
+import { useUser } from "@/context";
 
 interface Props {
   categories: string;
@@ -15,7 +17,11 @@ const Home: NextPage<Props> = ({ categories, foods, user }) => {
   const categoriesList = JSON.parse(categories) as CategoriesResponse[];
   const foodsList = JSON.parse(foods) as FoodsResponse[];
   const userData = JSON.parse(user) as UsersResponse;
-  console.log(userData);
+  const { setUser } = useUser();
+
+  useEffect(() => {
+    setUser(userData);
+  }, []);
 
   return (
     <Layout>

@@ -4,9 +4,13 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 import navLinks from "@/components/layout/navLinks";
 import Link from "next/link";
 import { classNames } from "@/utils";
+import { useUser } from "@/context";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const { user } = useUser();
+
+  console.log(user);
 
   return (
     <div className={"w-full bg-white"}>
@@ -44,6 +48,26 @@ const NavBar = () => {
               </Link>
             </li>
           ))}
+          {!!user ? (
+            <li>
+              <Link className={"font-bold text-[#5d9e5f]"} href={"/logout"}>
+                Logout
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link className={"font-bold text-[#5d9e5f]"} href={"/login"}>
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link className={"font-bold text-[#5d9e5f]"} href={"/register"}>
+                  Register
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
 
@@ -60,6 +84,27 @@ const NavBar = () => {
             </Link>
           </li>
         ))}
+
+        {!!user ? (
+          <li>
+            <Link className={"font-bold text-[#5d9e5f]"} href={"/logout"}>
+              Logout
+            </Link>
+          </li>
+        ) : (
+          <>
+            <li>
+              <Link className={"font-bold text-[#5d9e5f]"} href={"/login"}>
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link className={"font-bold text-[#5d9e5f]"} href={"/register"}>
+                Register
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </div>
   );

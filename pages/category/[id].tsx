@@ -3,16 +3,25 @@ import { GetServerSideProps, NextPage } from "next";
 import { Layout } from "@/components/layout";
 import { CategoryPage } from "@/components/category";
 import { initPocketBase } from "@/utils";
-import {CategoriesResponse, FoodsResponse} from "@/types";
-import {ListResult} from "pocketbase";
+import { CategoriesResponse, FoodsResponse, UsersResponse } from "@/types";
+import { ListResult } from "pocketbase";
+import { useEffectOnce } from "usehooks-ts";
+import { useUser } from "@/context";
 
 interface Props {
   category: string;
   foods: string;
+  user: string;
 }
-const Category: NextPage<Props> = ({category, foods}) => {
+const Category: NextPage<Props> = ({category, foods, user}) => {
   const categoryData = JSON.parse(category) as CategoriesResponse;
   const foodsList = JSON.parse(foods) as ListResult<FoodsResponse>;
+  const userData = JSON.parse(user) as UsersResponse;
+  const { setUser } = useUser()
+
+  useEffectOnce(() => {
+    setUser(userData)
+  })
 
   return (
     <Layout>
@@ -49,12 +58,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       filter: `category.id = '${category.id}'`,
     });
 
-    console.log(foods)
+    // get user
+    const user = await pb.authStore.model;
 
     return {
       props: {
         category: JSON.stringify(category),
         foods: JSON.stringify(foods),
+        user: JSON.stringify(user)
       }
     }
   } catch (_) {

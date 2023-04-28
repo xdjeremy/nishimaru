@@ -1,19 +1,27 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
 import { ListResult } from "pocketbase";
-import { FoodsResponse } from "@/types";
+import { FoodsResponse, UsersResponse } from "@/types";
 import { Layout } from "@/components/layout";
 import { FoodsPage } from "@/components/foods";
 import { initPocketBase } from "@/utils";
+import { useUser } from "@/context";
+import { useEffectOnce } from "usehooks-ts";
 
 interface Props {
   foods: string;
+  user: string;
 }
 
-const Foods: NextPage<Props> = ({ foods }) => {
+const Foods: NextPage<Props> = ({ foods, user }) => {
   const foodsList = JSON.parse(foods) as ListResult<FoodsResponse>;
 
-  console.log(foodsList);
+  const userData = JSON.parse(user) as UsersResponse;
+  const { setUser } = useUser()
+
+  useEffectOnce(() => {
+    setUser(userData)
+  })
   return (
     <Layout>
       <FoodsPage foods={foodsList} />
@@ -29,15 +37,19 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       filter: "active = true",
     });
 
+    const user = pb.authStore.model;
+
     return {
       props: {
         foods: JSON.stringify(foods),
+        user: JSON.stringify(user)
       },
     };
   } catch (_) {
     return {
       props: {
         foods: [],
+        user: JSON.stringify(null)
       },
     };
   }

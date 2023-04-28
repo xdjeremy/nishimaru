@@ -20,18 +20,6 @@ const navLinks: NavLink[] = [
     name: "Cart",
     path: "/checkout",
   },
-  {
-    name: "Login",
-    path: "/login",
-  },
-  {
-    name: "Register",
-    path: "/register",
-  },
-  {
-    name: "Logout",
-    path: "/logout",
-  },
 ];
 
 export default navLinks;
