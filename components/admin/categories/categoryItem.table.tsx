@@ -25,10 +25,10 @@ const CategoryTableItem: FC<Props> = ({ category }) => {
   };
 
   return (
-    <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+    <tr className="border-b bg-white">
       <th
         scope="row"
-        className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+        className="whitespace-nowrap px-6 py-4 font-medium text-gray-900"
       >
         {category.id}
       </th>

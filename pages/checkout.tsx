@@ -11,12 +11,12 @@ interface Props {
 }
 
 type TExpand = {
-    food: FoodsResponse
-}
-const Checkout: NextPage<Props> = ({cart}) => {
+  food: FoodsResponse;
+};
+const Checkout: NextPage<Props> = ({ cart }) => {
   const methods = useForm<CheckoutTypes>();
-  const cartData = JSON.parse(cart) as CartsResponse<TExpand>[]
-  
+  const cartData = JSON.parse(cart) as CartsResponse<TExpand>[];
+
   return (
     <Layout>
       <FormProvider {...methods}>
@@ -27,29 +27,25 @@ const Checkout: NextPage<Props> = ({cart}) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    try {
-        const pb = await initPocketBase(ctx);
+  try {
+    const pb = await initPocketBase(ctx);
 
-        const cart = await pb.collection('carts').getFullList({
-            expand: 'food'
-        })
+    const cart = await pb.collection("carts").getFullList({
+      expand: "food",
+    });
 
-        console.log(cart);
-
-        return {
-            props: {
-                cart: JSON.stringify(cart)
-            }
-        }
-    } catch (_err: any) {
-        console.log(_err)
-
-        return {
-            props: {
-                cart: JSON.stringify([])
-            }
-        }
-    }
-}
+    return {
+      props: {
+        cart: JSON.stringify(cart),
+      },
+    };
+  } catch (_err: any) {
+    return {
+      props: {
+        cart: JSON.stringify([]),
+      },
+    };
+  }
+};
 
 export default Checkout;

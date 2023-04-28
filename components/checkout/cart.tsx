@@ -18,10 +18,10 @@ const Cart: FC<Props> = ({ cart, setCartData, isLoading }) => {
   return (
     <div className={"w-full rounded-lg bg-white"}>
       <div className={"flex flex-row items-center justify-between px-5 py-3"}>
-        <h2 className={"text-lg font-semibold text-gray-900 dark:text-white"}>
+        <h2 className={"text-lg font-semibold text-gray-900"}>
           Cart
         </h2>
-        <span className={"text-sm font-medium text-gray-900 dark:text-white"}>
+        <span className={"text-sm font-medium text-gray-900"}>
           {cart.length} items
         </span>
       </div>
@@ -31,11 +31,11 @@ const Cart: FC<Props> = ({ cart, setCartData, isLoading }) => {
         ))}
 
         <div className={"flex flex-col items-end justify-end pt-4"}>
-          <span className={"text-sm font-medium text-gray-900 dark:text-white"}>
+          <span className={"text-sm font-medium text-gray-900"}>
             Subtotal
           </span>
           <span
-            className={"mb-10 text-lg font-bold text-gray-900 dark:text-white"}
+            className={"mb-10 text-lg font-bold text-gray-900"}
           >
             PHP {totalCartPrice.toFixed(2)}
           </span>

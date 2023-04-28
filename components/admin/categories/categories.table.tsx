@@ -14,8 +14,8 @@ const CategoriesTable: FC = () => {
 
   return (
     <div className="relative overflow-x-auto">
-      <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-        <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+      <table className="w-full text-left text-sm text-gray-500">
+        <thead className="bg-gray-50 text-xs uppercase text-gray-700">
           <tr>
             <th scope="col" className="px-6 py-3">
               ID
@@ -52,13 +52,10 @@ const CategoriesTable: FC = () => {
           {!data && !error && (
             <>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-                <tr
-                  key={item}
-                  className="border-b bg-white dark:border-gray-700 dark:bg-gray-800"
-                >
+                <tr key={item} className="border-b bg-white">
                   <th
                     scope="row"
-                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
+                    className="whitespace-nowrap px-6 py-4 font-medium text-gray-900"
                   >
                     <Skeleton />
                   </th>
